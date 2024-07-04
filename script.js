@@ -34,18 +34,15 @@ function playRound(humanChoice, computerChoice) {
 
         
     if (humanChoice === computerChoice) {
-        alert(TIE_MESSAGE);
         return TIE_MESSAGE;
     }
     else if ((humanChoice === ROCK && computerChoice === SCISSORS) || 
              (humanChoice === PAPER && computerChoice === ROCK) ||
              (humanChoice === SCISSORS && computerChoice === PAPER)) {
         
-        alert(WIN_MESSAGE + ` ${humanChoice} beats ${computerChoice}`);
         return WIN_MESSAGE;
     }
     else {
-        alert(LOSE_MESSAGE + ` ${computerChoice} beats ${humanChoice}`);
         return LOSE_MESSAGE;
     } 
 }
@@ -80,4 +77,26 @@ function playGame() {
         alert("a tie");
     }
 }
-playGame();
+let playerScore = 0;
+let computerScore = 0;
+const game = document.querySelector("#game");
+const score = document.querySelector("#score");
+const playerResult = document.querySelector("#player-score");
+const computerResult = document.querySelector("#computer-score");
+game.addEventListener("click", e => {
+    const computerSelection = getComputerChoice()
+    const roundResult = playRound(e.target.id, computerSelection);
+    if (roundResult === WIN_MESSAGE) {
+        playerScore++;
+        playerResult.textContent = `Your Score: ${playerScore}`;
+        result.textContent = roundResult + ` ${e.target.id} beats ${computerSelection}`;
+    }
+    else if (roundResult === LOSE_MESSAGE) {
+        computerScore++;
+        result.textContent = roundResult + ` ${computerSelection} beats ${e.target.id}`;
+        computerResult.textContent = `Computer Score: ${computerScore}`;
+    }
+    else {
+        result.textContent = "a tie";
+    }
+})

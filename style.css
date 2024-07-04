@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+#game {
+    display: flex;
+    justify-content: center;
+}
+button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    transition: scale 200ms;
+    /* flex: 1; */
+
+}
+button:hover {
+    scale: 1.5;
+}
+#score {
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px;
+}
+
+#result {
+    text-align: center;
+    font-size: 1.4rem;
+}
