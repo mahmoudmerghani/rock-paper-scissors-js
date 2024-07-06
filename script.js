@@ -11,6 +11,7 @@ const playerResult = document.querySelector("#player-score");
 const computerResult = document.querySelector("#computer-score");
 const playAgain = document.querySelector("#play-again");
 const result = document.querySelector("#result");
+const winner = document.querySelector("#winner");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -45,8 +46,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function showWinner() {
-    const winner = document.createElement("div");
-    winner.id = "winner";
+    winner.style.visibility = "visible";
     if (playerScore > computerScore) {
         winner.textContent = "You won over the computer";
     }
@@ -56,7 +56,6 @@ function showWinner() {
     else {
         winner.textContent = "A Tie";
     }
-    document.body.insertBefore(winner, playAgain);
 }
 
 function playGame(e) {
@@ -89,7 +88,7 @@ function playGame(e) {
         counter = 1;
         round.textContent = `Round 5/5`; // don't update the counter to 6 keep it at 5
         game.removeEventListener("click", playGame);
-        playAgain.style.display = "block";
+        playAgain.style.visibility = "visible";
         return;
     }
     counter++;
@@ -98,11 +97,11 @@ function playGame(e) {
 game.addEventListener("click", playGame);
 
 playAgain.addEventListener("click", e => {
-    document.querySelector("#winner").remove();
+    winner.style.visibility = "hidden";
     round.textContent = `Round 1/5`;
     playerResult.textContent = "Your Score: 0";
     computerResult.textContent = "Computer Score: 0";
     result.textContent = "choose one to start the game";
     game.addEventListener("click", playGame);
-    playAgain.style.display = "none";
+    playAgain.style.visibility = "hidden";
 });
